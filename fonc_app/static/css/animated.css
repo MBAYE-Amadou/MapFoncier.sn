@@ -1,0 +1,11 @@
+.animated-text span:not(.fade) {
+    opacity:0;
+    
+  }
+  
+  .animated-text span {
+    transition:all .4s;
+    display:inline-block;
+  }
+  
+  

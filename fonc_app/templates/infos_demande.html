@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% block titre %} Demande parcelle {%endblock%}
+{% block breadcrumb %} Formulaire {%endblock%}
+{% block contenu %}
+
+<style>
+
+    .card-body {
+        padding: 50px;
+        text-align: center;
+        background-color: #474e5d;
+        color: black;
+        border: 1px solid gray;
+        background: rgb(255, 255, 255,.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0,.5);
+        background-image: url("/static/images/Geomatica.jpg");
+        background-repeat: no-repeat;
+        background-size: 10% 15%;
+      }
+     .center{
+        margin: auto;
+        padding: 10px;
+     }
+     
+</style>
+
+
+<div class="container">
+    
+     <div class="row mt-5">
+        <div class="center">
+            <div class="card card-body">
+                {%include 'modal_conseiller.html'%}
+                <h4>Vous êtes ?</h4>
+                    <form  method="POST">
+                        {%csrf_token%}
+                        {{form}}
+                        
+                        <a class="btn btn-outline-success mt-3" href="{% url 'formulaire'%}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="être humain" ><strong> Personne physique </strong> </a> 
+                        &emsp;
+                        <a class="btn btn-outline-success mt-3" href="{% url 'formulairebis'%}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="groupement ou entreprise"><strong> Personne morale</strong> </a> 
+                        &emsp;
+                        <a class="btn btn-outline-warning mt-3" href="{% url 'home'%}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="retour à l'accueil"> <strong> Annuler</strong></a> 
+                    </form>  
+                   
+            </div> 
+        </div>     
+     </div>
+        
+</div>
+
+
+
+{% endblock  %}

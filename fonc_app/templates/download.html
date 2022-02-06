@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% block breadcrumb %} Téléchargement{%endblock%}
+{% block contenu %}
+{%load static%}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgb(30, 138, 210);
+        margin: 10px 50px 20px;
+        padding: 10px 50px 20px;
+        background-image: url("/static/images/Geomatica.jpg");
+        background-repeat: no-repeat;
+        background-size: 15% 55%;
+        
+    }
+</style>
+<div class="container mt-5">
+
+      
+    <h2 class="text-center  card "> TELECHARGER VOTRE FORMULAIRE </h2>
+    {% for element in demandeurs %}
+        <div class="row  mt-5 ">
+
+            <div class="marquee2-container">
+                <div class="marquee2 text-center">
+                    Merci <strong>{{ element.Nom }} {{ element.Prénom }}</strong> de bien vouloir télécharger votre formulaire.
+                </div>        
+            </div>
+        
+            <div class="col text-center mt-5"> 
+                <a href="{{ element.id }}" class="btn btn-outline-success text-center " data-bs-toggle="tooltip" data-bs-placement="bottom" title="télécharger le formulaire"><strong>Télécharger</strong></a>
+            </div>
+        </div>
+    <br> 
+    {% endfor %}    
+   
+</div>
+
+{% endblock %}

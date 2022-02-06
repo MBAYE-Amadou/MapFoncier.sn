@@ -1,0 +1,139 @@
+body {
+    padding-top: 150px;
+    
+}
+
+.navbar .nav-item a:hover {
+    background-color: #FE2E2E;
+    text-shadow: 4px 4px 10px blue;
+    border-radius: 40px; 
+    border-bottom: 0.5rem solid blue;
+  }
+  
+
+.navigation .breadcrumb {
+    float: left;
+    margin: 8px 10px;
+    
+}
+
+.navbar{
+  
+  border-bottom: 0.2rem solid blue;
+  
+}
+ 
+img.img-thumbnail {
+    border: 0.5px solid #ddd; /* Gray border */
+    border-radius: 20px;  /* Rounded border */
+    padding: 3px; /* Some padding */
+    width: 157px; /* Set a small width */
+    
+  }
+  
+
+img.img-thumbnail:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+div.marquee-container{
+  display: flex;
+  align-items: center;
+  background:#08088A;
+  overflow: hidden;
+}
+
+.marquee{
+  font-size: 55px;
+  line-height: 1.2;
+  font-family: sans-serif;
+  padding: 20px 0;
+  color: #fff;
+  white-space: nowrap;
+  animation: marquee 30.5s
+  infinite linear;
+}
+
+ .marquee:after{
+   content: "Geomatica, vous souhaite la bienvenue!  ";
+   
+ }
+
+ @keyframes marquee{
+   0%{
+     transform: translateX(0);
+   }
+   100%{
+     transform: translateX(-50%);
+   }
+ }
+
+ .marquee2{
+  font-size: 23px;
+  line-height: 1.2;
+  font-family: sans-serif;
+  padding: 20px 10px;
+  color: #08088A;
+  background:#CEECF5;
+  white-space: nowrap;
+  animation: marquee 30.5s
+  infinite linear;
+}
+
+.marquee3{
+  font-size: 25px;
+  line-height: 1.2;
+  font-family: sans-serif;
+  padding: 20px 0;
+  color: #08088A;
+  background:#CEECF5;
+  white-space: nowrap;
+ 
+}
+
+
+.box {
+  position: relative;
+  max-width: 800px;
+  padding: 20px;
+  font-size: 25px;
+  text-transform:uppercase;
+  color: rgb(15, 15, 15);
+  background: rgb(255, 255, 255,.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0,.5);
+
+}
+
+a.text-success{
+  text-decoration: none;
+}
+
+.post-form{
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+#updateDetails{
+  align-items: center;
+}
+    
+small{
+  color: red;
+  size: 10px;
+}

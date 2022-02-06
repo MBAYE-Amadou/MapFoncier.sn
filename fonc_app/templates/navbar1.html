@@ -1,0 +1,26 @@
+{%load static%}
+
+  <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/MapFonCIER.SN.gif' %}" alt="Logo" 
+           width="30" height="30" class=" d-inline-block align-text-top">
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{%url 'home'%}">ACCUEIL</a></li>
+        <li class="active"><a href="{% url 'formulaire'%}">DEMANDE PARCELLE</a></li>
+        <li><a href="{% url 'contact'%}">CONTACTS</a></li>
+        <li><a href="{% url 'about'%}">A PROPOS</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span>CONNEXION</a></li>
+        <li><a href="{% url 'login-auth'%}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home'%}">Accueil</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% block breadcrumb %}{%endblock%}</li>
+    </ol>
+  

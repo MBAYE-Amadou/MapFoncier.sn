@@ -1,0 +1,34 @@
+{%load static%}
+<dialog id="favDialog">
+  <form method="dialog">
+    <div style="text-align: center">
+      <img src="{% static 'images/conseil.gif'%}" alt="conseil" width="150" height="150" >
+    </div>
+    <p class="lead"> Avant de faire une demande de parcelle, il est préférable de consulter l'application <strong>MapFoncier.sn</strong>.</p>
+    <menu style="text-align: center;">
+      <a class="btn btn-outline-warning mt-3" href="{%url 'information'%}"><strong>Retour</strong></a>
+      &emsp;
+      <a class="btn btn-outline-success mt-3" href="{% url 'application'%}"><strong>Aller à MapFoncier.sn</strong></a>
+    </menu>
+  </form>
+</dialog>
+
+<menu style="text-align: right;">
+  <a class="btn btn-danger mb-2" id="updateDetails" data-bs-toggle="tooltip" data-bs-placement="bottom" title="petit conseil avant de remplir le formulaire" > <strong> Le Conseiller </strong></a> 
+</menu>
+
+<!-- Un peu de javascript --> 
+<script>
+  let updateButton = document.getElementById('updateDetails');
+let favDialog = document.getElementById('favDialog');
+
+
+// Le bouton "Mettre à jour les détails" ouvre le <dialogue> ; modulaire
+updateButton.addEventListener('click', function onOpen() {
+  if (typeof favDialog.showModal === "function") {
+    favDialog.showModal();
+  } else {
+    console.error("L'API <dialog> n'est pas prise en charge par ce navigateur.");
+  }
+});
+</script>

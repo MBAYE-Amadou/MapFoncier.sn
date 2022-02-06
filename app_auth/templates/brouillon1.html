@@ -1,0 +1,22 @@
+<script>
+    $(document).ready(function() {
+        $('input').keyup(function() {
+            let textSaisi = $(this).val();
+            let attrName = $(this).attr('name');
+            let validatorElement = ".div-error-" + attrName;
+            if (textSaisi === "") {
+                if (!$(this).hasClass('is-invalid')) {
+                    $(this).addClass('is-invalid');
+                    $(validatorElement).show();
+                }
+            } else {
+                $(this).removeClass('is-invalid');
+
+                $(validatorElement).hide();
+
+            }
+
+        })
+    })
+</script>
+

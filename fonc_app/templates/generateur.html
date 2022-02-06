@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="fr">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png'%}">
+   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png'%}">
+   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png'%}">
+   <link rel="manifest" href="{% static 'favicon/site.webmanifest'%}">
+   <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg'%}" color="#5bbad5">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <title>{% block titre %}{%endblock%}</title>
+   <style>
+      .title{
+          color: blue;
+          
+      }
+      a.text-success{
+         text-decoration: none;
+       }
+      
+       .signature
+       {
+           text-align: right;
+       }
+  </style>
+   
+</head>
+<body>
+   <div class="container navigation">
+      <div class="row navigation">
+         <nav class="navbar navbar-expand-lg navbar-light  text-center "  style="background-color: #CEECF5;">
+            <h3  class="text-blue"> <strong>Formulaire de demande de Parcelle :</strong> {{Nom}} &nbsp; {{Prénom}}</h3>
+            <p class="lead" style="color: red;"> <strong>Numéro de suivi :</strong> {{num}}</p>
+         </nav>
+         
+      </div>
+   </div>
+          
+   <div class="container mt-4">
+      <h3><strong class="title" > Nom :</strong> &emsp; <i class="lead">{{ Nom }}</i></h3> 
+      <br>
+      <h3> <strong class="title">Prénom :</strong> &emsp; <i class="lead">{{ Prénom }}</i>  </h3> 
+      <br>
+      <h3> <strong class="title">Proféssion :</strong> &emsp; <i class="lead">{{ Profession }}</i> </h3> 
+      <br>
+      <h3 ><strong class="title">Date de naissance :</strong> &emsp; <i class="lead">{{ Date_de_naissance}}</i> </h3> 
+      <br>
+      <h3><strong class="title">Sexe :</strong> &emsp; <i class="lead">{{Sexe}}</i></h3> 
+      <br>
+      <h3><strong class="title">Nationalité :</strong> &emsp; <i class="lead"> {{Nationalité }}</i></h3>
+      <br>
+      <h3><strong class="title">Adresse physique :</strong> &emsp; <i class="lead">{{Adresse_physique}}</i></h3>
+      <br>
+      <h3><strong class="title">Téléphone :</strong> &emsp; <i class="lead">{{Téléphone}}</i></h3>
+      <br>
+      <h3><strong class="title">Email :</strong> &emsp; <i class="lead">{{Email}}</i></h3>
+      <br>
+      <h3><strong class="title">Superficie demandée :</strong> &emsp; <i class="lead">{{Superficie_demandée}} hectares</i></h3>
+      <br>
+      <h3><strong class="title">Type d'occupation :</strong> &emsp; <i class="lead">{{Type_occupation}}</i></h3>
+      <br>
+      
+      <br>
+   </div>
+
+   <div class="signature">
+      Ronkh, le {{date_demande}}
+   </div>
+   <footer class="bg-light text-center text-lg-start mt-5">
+      <div class="text-center text-success p-3 " style="background-color: #d1cccc55;">
+          <strong> © 2021 Copyright : </strong>
+          <a class="text-success " href="https://www.geomatica-services.com" target="_blank"><em>Géomatica Services - Leader de la Géomatique </em> </a>
+          <br> | Mentions légales | RGPD
+      </div>  
+  </footer>
+</body>
+</html>

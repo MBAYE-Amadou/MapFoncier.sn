@@ -1,0 +1,73 @@
+{% extends 'base.html'%}
+{% block breadcrumb %} Vérification {%endblock%}
+{% block contenu %} 
+{%load static%}
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgb(30, 138, 210);
+        margin: 10px 50px 20px;
+        padding: 10px 50px 20px;
+        background-image: url("/static/images/Geomatica.jpg");
+        background-repeat: no-repeat;
+        background-size: 15% 35%;
+        
+    }
+</style>
+  <div class="container ">
+   {%for msg in messages%}
+         <div class="alert alert-success d-flex align-items-center text-center " role="alert">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+              </svg>
+        
+              <div>
+                &ensp;<strong>{{msg}}</strong>
+              </div>
+         </div>
+   {%endfor%}
+      <div class="row">
+
+          <div class="col text-center mt-5  card">
+             <h2 >Vérification des données</h2>
+             <img src="{%static 'images/verify.gif'%}" width="100" height="100" class="rounded mx-auto d-block" >
+          </div>
+
+      </div>
+      
+
+      <div class="container navigation">
+        <div class="row navigation">
+            <div class="marquee2-container mt-4">
+               <div class="marquee3 text-center">
+                  Merci <strong>{{Nom_structure}}</strong> de bien vérifier vos données saisies.
+               </div>        
+            </div>
+        </div>
+      </div>
+      
+      <div class="container mt-5">
+         <h5 class="title" > Nom de structure : &emsp;<i class="lead">{{Nom_structure}}</i></h5> 
+            <br>
+            <h5 class="title" > Date de création : &emsp;<i class="lead">{{ date_de_creation }}</i> </h5> 
+            <br>
+            <h5 class="title"> Nombre d'adhérent : &emsp;<i class="lead">{{ Nombre_adhérent }} </i> </h5> 
+            <br>
+            <h5 class="title"> Adresse physique : &emsp;<i class="lead">{{ Adresse_physique }}</i> </h5> 
+            <br>
+            <h5 class="title"> Téléphone : &emsp;<i class="lead">{{ Téléphone }}</i> </h5> 
+            <br> 
+            <h5 class="title"> Email : &emsp;<i class="lead">{{ Email }}</i> </h5>
+            <br>
+            <h5 class="title"> Superficie demandée : &emsp;<i class="lead">{{ Superficie_demandée }} hectares </i></h5>
+            <br>
+            <h5 class="title"> Type d'occupation : &emsp;<i class="lead">{{ Type_occupation }}</i></h5>
+            <br>
+            <h5 class="title">Date et heure de demande: &emsp;<i class="lead">{{date_demande}}</i></h5>
+      </div>
+
+      <div class="col text-center mt-5">
+        <a class="btn btn-primary" href="{% url 'telecharger'%}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="télécharger le formulaire en pdf" ><strong> Ok </strong></a>
+      </div>
+  </div>
+    
+{% endblock %}

@@ -1,0 +1,45 @@
+<style>
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color:black;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: whitesmoke;}
+
+ul.topnav li a.active {background-color: whitesmoke;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
+.topnav {min-height:8px}
+</style>
+</head>
+<body>
+
+<ul class="topnav" style="background-color: #e3fde3;">
+  <li><a class="active" href="{%url 'home'%}"><strong> Accueil </strong></a></li>
+  <li><a href="#news"><strong>Informations</strong></a></li>
+  <li><a href="#contact"><strong> Contact </strong></a></li>
+  <li class="right"><a href="#about" id="about-btn"><strong> À Propos </strong></a></li>
+</ul>
+
+
+
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+{%load static%}
+{% block titre %}Page de gestion{%endblock%}
+{% block breadcrumb %}Espace Admin{%endblock%}
+{% block contenu %}
+
+<style>
+
+    .card-body {
+        padding: 50px;
+        text-align: center;
+        background-color: #474e5d;
+        color: black;
+        border: 1px solid gray;
+        background: rgb(255, 255, 255,.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0,.5);
+        background-image: url("/static/images/Geomatica.jpg");
+        background-repeat: no-repeat;
+        background-size: 10% 15%;
+        
+      }
+     .center{
+        margin: auto;
+    
+        padding: 10px;
+    
+    }
+
+    
+    .card {
+    
+        box-shadow: 0 4px 8px 0 rgb(30, 138, 210);
+    
+       margin: 10px 50px 20px;
+    
+       padding: 5px 20px 10px;
+    
+       
+    }
+     
+</style>
+
+<div class="container">
+    
+    <div class="row ">
+       <div class="center">
+           <div class="card-body mt-5">
+            <h4 class=" card ">Donner une décision :</h4>
+               <div style="text-align: center" >
+                   <img src="{% static 'images/decision.gif'%}" alt="decision" width="100" height="100">
+               </div>
+                <form action="" method="POST" class="mt-5">
+                    {%csrf_token%}
+                    {{form}}
+                    &emsp;
+                    <input class="btn btn-outline-success " type="submit" name="Envoyer" value="Valider">
+                    &emsp;
+                    <a class="btn btn-outline-warning " href="{% url 'demande'%}">Annuler</a>
+                </form>  
+
+           </div> 
+
+       </div> 
+
+    </div>
+       
+</div>
+{% endblock  %}

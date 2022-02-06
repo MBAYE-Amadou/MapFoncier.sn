@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% block breadcrumb %} À Propos{%endblock%}
+{% block contenu %}
+{%load static%}
+<div class="container mt-5">
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+   
+    <style>        
+
+        h1 {
+          text-align: center;
+          text-transform: uppercase;
+          color: #4CAF50; 
+          font-family: 'Abril Fatface';
+        }
+        
+      .about {
+          text-indent: 0;
+          text-align: start;
+          letter-spacing: 3px;
+        }    
+    
+    html {
+      box-sizing: border-box;
+    }
+    
+    .card {
+      box-shadow: 0 4px 8px 0 rgb(30, 138, 210);
+      margin: 10px 50px 20px;
+      padding: 10px 50px 20px;
+      
+    }
+    
+    .about-section {
+      padding: 50px;
+      text-align: center;
+      background-color: #474e5d;
+      color: black;
+      border: 1px solid gray;
+      background: rgb(255, 255, 255,.2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0,.5);
+      background-image: url("/static/images/Geomatica.jpg");
+      background-repeat: no-repeat;
+      background-size: 10% 15%;
+     
+    }
+   
+    </style>
+  </head>
+    
+      <div class="about-section">
+        <h1 class="card "  >À Propos du projet </h1>
+          <p class="about" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio ullam eos minus reprehenderit iste, non corrupti, ad quibusdam quis perspiciatis reiciendis natus quod quas quae numquam sint expedita dignissimos et!</p>
+          <p class="about">Resize the browser window to see that this page is responsive by the way.</p>
+        
+        <a class="btn btn-outline-danger mt-2" href="{% url 'home'%}"> <strong> Retour à l'Accueil</strong></a>
+      </div>
+
+</div>
+
+{% endblock %}

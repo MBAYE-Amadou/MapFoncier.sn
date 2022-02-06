@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% block titre %}Page de gestion {%endblock%}
+{% block breadcrumb %}Espace Admin {%endblock%}
+{% block contenu %}
+
+<style>
+    .card-body {
+        padding: 50px;
+        text-align: center;
+        background-color: #474e5d;
+        color: black;
+        border: 1px solid gray;
+        background: rgb(255, 255, 255,.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0,.5);
+        background-image: url("/static/images/Geomatica.jpg");
+        background-repeat: no-repeat;
+        background-size: 10% 15%;
+       
+      }
+    
+      .center{
+          margin: auto;
+          padding: 10px;
+      }
+    
+</style>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="center">
+            <div class="card card-body ">
+                <h4> Quelle demande voulez-vous administrer ?</h4>
+                    <form  method="POST">
+                        {%csrf_token%}
+                        {{form}}
+                        
+                        <a class="btn btn-outline-success mt-3" href="{% url 'demande'%}"><strong> Personne physique </strong> </a> 
+                        &emsp;
+                        <a class="btn btn-outline-success  mt-3" href="{% url 'demandebis'%}"><strong> Personne morale</strong> </a> 
+                        
+                    </form>  
+            </div> 
+        </div>     
+    </div>
+        
+</div>
+{% endblock  %}

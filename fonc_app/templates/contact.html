@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% block titre %}Page de contact{%endblock%}
+{% block breadcrumb %}Contacts{%endblock%}
+{% block contenu %} 
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgb(30, 138, 210);
+        margin: 10px 50px 20px;
+        padding: 10px 50px 20px;
+        background-image: url("/static/images/Logo.png");
+        background-repeat: no-repeat;
+        background-size: 17% 13%;
+        background-position: top;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if message_name %}
+
+            <div class="marquee2-container mt-4">
+                <div class="marquee3 text-center ">
+                    Merci <strong > {{ message_name }} </strong> de nous avoir contacter.
+                   
+                </div>
+            </div>
+            
+           {%else%}   
+        </div>
+    </div> 
+    <div class="contact-form mt-3">
+        <div class="card">
+
+            <div class="card-header  text-center"><i class="bi bi-envelope-fill" style="color:red;"></i> <strong style="color:red;">Conctatez nous</strong> </div>
+        <div class="card-body">
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token%}
+                   <label  for="fname">Nom et Prénom</label>
+                   <input required type="text"  name="message-name" class="form-control mb-3" placeholder="Votre nom">
+
+                   <label for="email">Email</label>
+                   <input  required  type="email" name="message-email" class="form-control mb-3" placeholder="Votre email">
+                  
+                   <label for="tag">Objet</label>
+                   <input required type="text"  name="subject" class="form-control mb-3" placeholder="Objet">
+                   <label for="subject">Message</label>
+                      <textarea name="message"  class="form-control mb-3" placeholder="Votre message ..." style="height:200px"></textarea>
+                    
+    
+                    <div class="col-12  text-center mt-3">
+                        <button type="submit" class="btn btn-outline-success"><strong>Envoyer</strong></button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+            
+        </div>
+        
+    </div>
+</div>
+{%endif%}  
+{% endblock %}
