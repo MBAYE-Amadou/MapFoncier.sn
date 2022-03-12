@@ -1,16 +1,15 @@
 {% extends 'base.html'%}
 {% block titre %}Page Formulaire{%endblock%}
 {% block breadcrumb %}Formulaire{%endblock%}
-{% block contenu %} 
+{% block contenu %}
+ 
   <div class="container ">
       <div class="row">
-
           <div class="col text-center mt-5">
              <h1 >Formulaire de demande de parcelle</h1>
           </div>
-
       </div>
-
+   
       <div class="form-groupe">
            <form  enctype="multipart/form-data" method="post" class="post-form">
              {% csrf_token%}

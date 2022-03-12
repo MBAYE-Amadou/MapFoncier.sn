@@ -1,0 +1,234 @@
+<!DOCTYPE html>{%load static%}
+<html>
+<head>
+  {%include 'chargement.html'%}
+  {%include 'simpl_nav.html'%}
+  <title>Votre terrain</title>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 97%;
+      width: 100%;
+      font-family: "Avenir Next W00";
+    }
+
+    .header {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      height: 45px;
+      z-index: 1;
+      color: #f8f8f8;
+      background: #08088A;
+      font-size: 45px;
+	  
+    }
+
+    .title {
+      flex: 1 1;
+	  text-align:center;
+      margin: 15px;
+    }
+
+    .title {
+      align-self: center;
+    }
+
+    #search {
+      align-self: right;
+      margin: 13px;
+      width: 200px;
+    }
+
+    /* Widget containers and all buttons */
+
+    .theme .esri-widget,
+    .theme .esri-widget--button,
+    .theme .esri-widget .esri-menu,
+    .theme .esri-widget table,
+    .theme .esri-popup__main-container,
+    .theme .esri-popup .esri-popup__pointer-direction,
+    .theme .esri-popup .esri-popup__button,
+    .theme .esri-button,
+    .theme .esri-widget a {
+      background-color: #C0C0C0;
+      color: #f8f8f8;
+    }
+
+    /* Focus/hover states */
+
+    .theme .esri-widget--button:focus,
+    .theme .esri-widget--button:hover {
+      background-color: #FF0000;
+      color: #f8f8f8;
+    }
+
+    .theme .esri-button:focus,
+    .theme .esri-button:hover {
+      color: #0000FF;
+    }
+
+    /* Zoom - Safer to resize individual buttons */
+
+    .theme .esri-zoom .esri-widget--button,
+    .theme .esri-home.esri-widget--button {
+      width: 28px;
+      height: 28px;
+    }
+
+    .theme .esri-widget [class*="esri-icon"], 
+    .theme .esri-widget [role="button"] [class*="esri-icon"] {
+      font-size: 12px;
+    }
+
+    
+	.hidden {
+		display: none;
+	  }
+
+    /* Scalebar - Lower position */
+
+    .theme .esri-scale-bar {
+      margin-bottom: -15px;
+    }
+
+    /* Attribution - Do not override */
+
+    .theme .esri-attribution,
+    .theme .esri-attribution a {
+      background: #08088A;
+      color: #323232;
+    }
+
+    /* Search - Do not override */
+
+    .theme .esri-widget.esri-search,
+    .theme .esri-search .esri-widget-button,
+    .theme .esri-widget .esri-menu {
+      background-color: #f8f8f8;
+      color: #696969;
+    }
+
+    .theme .esri-search .esri-widget-button {
+      width: 28px;
+      height: 28px;
+    }
+
+    .theme .esri-search .esri-widget-button,
+    .theme .esri-search .esri-search__input,
+    .theme .esri-widget .esri-menu {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    /* Padding - Allow Legend and Attribution to remain full width */
+
+    .theme .esri-ui {
+      right: 0 !important;
+    }
+
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
+
+  <script src="https://js.arcgis.com/4.10/"></script>
+
+  <script>
+    require([
+	  "esri/config",
+	  "esri/Map",
+	  "esri/portal/Portal",
+	  "esri/widgets/Sketch",
+      "esri/layers/GraphicsLayer",
+      "esri/views/MapView",
+      "esri/widgets/Home",
+      "esri/widgets/Legend",
+      "esri/widgets/BasemapGallery",
+      "esri/widgets/ScaleBar",
+      "esri/widgets/Search",
+	  "esri/widgets/Expand"
+    ], (esriConfig, Map, Portal, Sketch, GraphicsLayer, MapView, Home, Legend, BasemapGallery, Scalebar, Search, Expand) => {
+
+      // If you define the Portal URL in esriConfig, the
+      // basemapGallery widget can determine which basemaps
+      // to use.
+      esriConfig.portalUrl = "https://jsapi.maps.arcgis.com";
+      // Intialize a portal instance and load it
+
+      const portal = new Portal();
+      portal
+        .load()
+        .then(() => {
+			// A portal can be configured to use Vector Basemaps
+          // by default or not.
+          const basemap = portal.useVectorBasemaps
+            ? portal.defaultVectorBasemap
+            : portal.defaultBasemap;
+          const map = new Map({
+            basemap: basemap
+          });
+		  const view = new MapView({
+            container: "viewDiv",
+            map: map,
+            center: [-118.24, 34.073],
+            
+          });
+		  // The BasemapGallery will use the basemaps
+          // configured by the Portal URL defined in esriConfig.portalUrl
+          const basemapGallery = new BasemapGallery({
+            view: view
+          });
+		  const bgExpand = new Expand({
+            view: view,
+            content: basemapGallery
+          });
+          view.ui.add(bgExpand, "bottom-right");
+		})
+        .catch((error) => {
+          console.error(error);
+        });
+    
+	  // Add custom button with calcite icon
+      var buttonWidget = document.createElement("div");
+      buttonWidget.id = "buttonWidget";
+      buttonWidget.className = "esri-widget esri-component esri-widget--button esri-interactive";
+      buttonWidget.innerHTML = "<span aria-hidden='true' role='presentation' class='esri-icon esri-icon-layers'></span>";
+
+      view.ui.add(buttonWidget, "top-left");
+
+      // Widgets
+
+      var home = new Home({
+        view: view
+      });
+      view.ui.add({
+        component: home, 
+        position: "top-left", 
+        index: 1});
+
+      var search = new Search({
+        view: view,
+        container: "search"
+      });
+
+      var scalebar = new Scalebar({
+        view: view
+      });
+      view.ui.add(scalebar, "bottom-left");
+
+      
+    });
+  </script>
+
+</head>
+<body class="theme">
+  <div class="header">
+    <div class="title">MapFoncier.sn</div>
+    <div id="search"></div>
+  </div>
+  <div id="viewDiv"></div>
+</body>
+</html>

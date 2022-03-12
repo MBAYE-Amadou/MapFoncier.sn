@@ -91,6 +91,7 @@ def show_demandeurs(request):
         Sexe = dem.Sexe
         Nationalité = dem.Nationalité
         Adresse_physique = dem.Adresse_physique
+        Quartier = dem.Quartier
         Téléphone = dem.Téléphone
         Email = dem.Email
         Superficie_demandée  = dem.Superficie_demandée 
@@ -99,7 +100,7 @@ def show_demandeurs(request):
     
     return render(request, 'showinfodemande.html', {'Nom':Nom, 'Prénom':Prénom, 'Profession':Profession, 
                                                     'Date_de_naissance':Date_de_naissance, 'Sexe':Sexe,
-                                                    'Nationalité':Nationalité, 'Adresse_physique':Adresse_physique,
+                                                    'Nationalité':Nationalité, 'Adresse_physique':Adresse_physique, 'Quartier':Quartier,
                                                     'Téléphone':Téléphone, 'Email':Email, 'Superficie_demandée':Superficie_demandée,
                                                     'Type_occupation':Type_occupation, 'date_demande':date_demande})
 
@@ -113,6 +114,7 @@ def generer(request, id):
     Sexe = demandeurs.Sexe
     Nationalité = demandeurs.Nationalité
     Adresse_physique = demandeurs.Adresse_physique
+    Quartier = demandeurs.Quartier
     Téléphone = demandeurs.Téléphone
     Email = demandeurs.Email
     Superficie_demandée  = demandeurs.Superficie_demandée 
@@ -123,7 +125,7 @@ def generer(request, id):
     template = get_template('generateur.html')
     context ={'Nom':Nom.upper(), 'Prénom':Prénom.upper(), 'Profession':Profession, 
                                                     'Date_de_naissance':Date_de_naissance, 'Sexe':Sexe, 'num':num,
-                                                    'Nationalité':Nationalité, 'Adresse_physique':Adresse_physique,
+                                                    'Nationalité':Nationalité, 'Adresse_physique':Adresse_physique, 'Quartier':Quartier,
                                                     'Téléphone':Téléphone, 'Email':Email, 'Superficie_demandée':Superficie_demandée,
                                                     'Type_occupation':Type_occupation, 'date_demande':date_demande}
     html = template.render(context)
@@ -152,6 +154,7 @@ def show_demandeursbis(request):
         date_de_creation = dem.date_de_creation
         Nombre_adhérent = dem.Nombre_adhérent
         Adresse_physique = dem.Adresse_physique
+        Quartier = dem.Quartier
         Téléphone  = dem.Téléphone
         Email = dem.Email
         Superficie_demandée  = dem.Superficie_demandée 
@@ -159,7 +162,7 @@ def show_demandeursbis(request):
         date_demande = dem.date_demande
     
     return render(request, 'showinfodemandebis.html', {'Nom_structure':Nom_structure, 'date_de_creation':date_de_creation, 'Nombre_adhérent':Nombre_adhérent, 
-                                                    'Adresse_physique':Adresse_physique, 'Téléphone':Téléphone, 'Email':Email, 
+                                                    'Adresse_physique':Adresse_physique, 'Quartier':Quartier, 'Téléphone':Téléphone, 'Email':Email, 
                                                     'Superficie_demandée':Superficie_demandée, 'Type_occupation':Type_occupation, 'date_demande':date_demande})
     
 
@@ -170,6 +173,7 @@ def generer_bis(request, id):
     date_de_creation = societes.date_de_creation
     Nombre_adhérent = societes.Nombre_adhérent
     Adresse_physique = societes.Adresse_physique
+    Quartier = societes.Quartier
     Téléphone  = societes.Téléphone
     Email = societes.Email
     Superficie_demandée  = societes.Superficie_demandée 
@@ -179,7 +183,7 @@ def generer_bis(request, id):
     
     template = get_template('generateur_bis.html')
     context ={'Nom_structure':Nom_structure, 'date_de_creation':date_de_creation, 'Nombre_adhérent':Nombre_adhérent, 'num':num,
-                                                    'Adresse_physique':Adresse_physique, 'Téléphone':Téléphone, 'Email':Email, 
+                                                    'Adresse_physique':Adresse_physique, 'Quartier':Quartier, 'Téléphone':Téléphone, 'Email':Email, 
                                                     'Superficie_demandée':Superficie_demandée, 'Type_occupation':Type_occupation, 'date_demande':date_demande}
     html = template.render(context)
     options = {

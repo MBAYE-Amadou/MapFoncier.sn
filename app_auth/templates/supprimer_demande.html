@@ -33,7 +33,9 @@
 </style>
 
 <div class="container">
-    
+    {%include 'simpl_nav.html'%}
+    <h1 class=" text-center mt-3 mb-3">COMMUNE DE MEKHE :</h1>
+    <h2 class=" text-center mb-3">Plateforme de gestion des demandes de parcelles</h2>
     <div class="row mt-3">
        <div class="center">
            <div class="card-body" >
@@ -44,7 +46,7 @@
                     </svg>
                 </div>
                 
-                <strong ><h4 class="text-danger card ">Voulez-vous vraiment supprimer ce demandeur ?</h4></strong>
+                <strong ><h4 class="text-danger card ">Voulez-vous vraiment supprimer cette personne ?</h4></strong>
            
                 <form action="{% url 'supprimer_demande' item.id%}" method="post" class="mt-4">
                      {%csrf_token%}
